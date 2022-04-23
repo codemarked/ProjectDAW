@@ -1,0 +1,526 @@
+@charset "UTF-8";
+html {
+    background: #f1f1f1;
+    font-family: 'PT Sans Caption', sans-serif;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    background-color: #f1f1f1;
+    margin: 0 auto;
+    max-width: 100%;
+}
+.header {
+    background: #292929;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+.header .logo {
+    background-size: cover;
+    float: left;
+    height: 50px;
+    padding-left: 10px;
+    width: 120px;
+}
+.header a {
+    float: left;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+.link {
+    text-align: center;
+    padding: 14px 16px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+.dropdown .hoverable {
+    display: block;
+}
+.container {
+    background: #f1f1f1;
+    height: auto;
+    margin: auto;
+    min-height: 100vh;
+    justify-content: center;
+    width: 45%;
+}
+.footer {
+    background: #292929;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    min-height: 40px;
+}
+.footer a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform .2s;
+}
+.maintenance {
+    margin-top: 25%;
+}
+/* Login Start*/
+.login {
+  	width: 400px;
+  	background-color: #fff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  	margin: 100px auto;
+}
+.login h1 {
+  	text-align: center;
+  	color: #5b6574;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0;
+  	border-bottom: 1px solid #dee0e4;
+}
+.login form {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 20px;
+}
+.login form label {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	width: 50px;
+  	height: 50px;
+  	background-color: #292929;
+  	color: #fff;
+}
+.login form input[type="password"], .login form input[type="text"] {
+  	width: 310px;
+  	height: 50px;
+  	border: 1px solid #dee0e4;
+  	margin-bottom: 20px;
+  	padding: 0 15px;
+}
+.login form input[type="submit"] {
+  	width: 100%;
+  	padding: 15px;
+ 	margin-top: 20px;
+  	background-color: #292929;
+  	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #fff;
+  	transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+	background-color: #dee0e4;
+  	transition: background-color 0.2s;
+  	color: #292929;
+}
+.login form .errormessage {
+    font-size: 10px;
+    color: crimson;
+    margin: 10 auto;
+}
+/* Login End*/
+/* Cookies */
+.cookie {
+    display: none;
+    opacity: 0.8;
+    background-color: #292929;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 4s;
+}
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+.cookie .closeIcon {
+    display: none;
+}
+.cookie .title-wrap {
+    padding-left: 8%;
+    padding-right: 8%;
+    text-align: left;
+}
+.cookie .content-wrap {
+    position: relative;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+.cookie .content-wrap .msg-wrap {
+    text-align: left;
+}
+.cookie .content-wrap .msg-wrap .btn-wrap button {
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid gray;
+}
+.cookie .content-wrap .msg-wrap .btn-wrap button:hover {
+    border: 2px solid #E4B363;
+}
+/* Image upload Start */
+.upload__box {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 40px;
+    padding: 20px;
+}
+.upload__box .submit {
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    min-width: 116px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid;
+    background-color: #292929;
+    border-color: #292929;
+    border-radius: 10px;
+    line-height: 26px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.upload__box .submit:hover {
+    background-color: unset;
+    color: #292929;
+    transition: all 0.3s ease;
+}
+.upload__inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.upload__btn {
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    min-width: 116px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid;
+    background-color: #292929;
+    border-color: #292929;
+    border-radius: 10px;
+    line-height: 26px;
+    font-size: 14px;
+}
+.upload__btn:hover {
+    background-color: unset;
+    color: #292929;
+    transition: all 0.3s ease;
+}
+.upload__btn-box {
+    margin-bottom: 10px;
+}
+.upload__img-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+.upload__img-box {
+    width: 200px;
+    padding: 0 10px;
+    margin-bottom: 12px;
+}
+.upload__img-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
+}
+.upload__img-close:after {
+    content: "✖";
+    font-size: 14px;
+    color: white;
+}
+
+.img-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 100%;
+}
+/* Image upload Stop */
+/* Post Start*/
+.main{
+    background: #f1f1f1;
+    height: auto;
+    width: 84%;
+    padding: 40px 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.wrapper{
+/*    display: grid;*/
+    grid-template-columns: 60% 40%;
+    grid-gap: 30px;
+}
+.left-col{
+    display: flex;
+    flex-direction: column;
+}
+.status-wrapper{
+    width: 100%;
+    height: 120px;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 10px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+.status-wrapper::-webkit-scrollbar{
+    display: none;
+}
+.status-card{
+    flex: 0 0 auto;
+    width: 80px;
+    max-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+.profile-pic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 3px;
+    background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+    cursor: pointer;
+}
+.profile-pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.username{
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    margin-top:5px;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.post{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 40px;
+}
+.info{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.info .username{
+    width: auto;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.info .options{
+    height: 10px;
+    cursor: pointer;
+}
+.info .user{
+    display: flex;
+    align-items: center;
+}
+.info .profile-pic{
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    background: none;
+}
+.info .profile-pic img{
+    border: none;
+}
+.post-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.post-content{
+    width: 100%;
+    padding: 20px;
+}
+.likes{
+    font-weight: bold;
+}
+.description{
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+.description span{
+    font-weight: bold;
+    margin-right: 10px;
+}
+.description .user{
+    cursor: pointer;
+}
+.post-time{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+.comment-wrapper{
+    width: 100%;
+    padding-left: 20px;
+    height: 50px;
+    border-radius: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment-wrapper .icon{
+    height: 30px;
+}
+.comment-box{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+.comment-btn , .action-btn {
+    width: 70px;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #292929;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.reaction-wrapper {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: -20px;
+    align-items: center;
+}
+.reaction-wrapper span {
+    height: 20px;
+    font-size: 27px;
+    margin: 0;
+    margin-right: 20px;
+    cursor: pointer;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    transition: 0.2s;
+}
+.reaction-wrapper span:hover {
+    color: darkred;
+    -webkit-text-stroke-color: darkred;
+}
+.reaction-wrapper span.active-button {
+    height: 20px;
+    font-size: 27px;
+    margin: 0;
+    margin-right: 20px;
+    cursor: pointer;
+    color: darkred;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+.reaction-wrapper .icon {
+    height: 25px;
+    margin: 0;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.reaction-wrapper .icon:hover{
+    height: 25px;
+    margin: 0;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.reaction-wrapper .icon.save{
+    margin-left: auto;
+}
+/* Post End*/
