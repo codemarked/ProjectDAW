@@ -164,7 +164,7 @@ body {
 /* Cookies */
 .cookie {
     display: none;
-    opacity: 0.8;
+    opacity: 0.9;
     background-color: #292929;
     position: absolute;
     bottom: 0px;
@@ -179,7 +179,7 @@ body {
 		opacity: 0;
 	}
 	100% {
-		opacity: 0.8;
+		opacity: 0.9;
 	}
 }
 .cookie .closeIcon {
@@ -358,7 +358,7 @@ body {
     border-radius: 50%;
     overflow: hidden;
     padding: 3px;
-    background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+    background: linear-gradient(45deg, rgb(145, 207, 219), rgb(25, 76, 179) 80%);
     cursor: pointer;
 }
 .profile-pic img{
@@ -489,7 +489,6 @@ body {
     margin: 0;
     margin-right: 20px;
     cursor: pointer;
-    color: white;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
     transition: 0.2s;
@@ -504,9 +503,14 @@ body {
     margin: 0;
     margin-right: 20px;
     cursor: pointer;
-    color: darkred;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
+}
+.reaction-wrapper span.liked {
+    color: darkred;
+}
+.reaction-wrapper span.unliked {
+    color: white;
 }
 .reaction-wrapper .icon {
     height: 25px;
@@ -523,4 +527,20 @@ body {
 .reaction-wrapper .icon.save{
     margin-left: auto;
 }
+.reaction-wrapper span.reaction-like {
+    
+}
+.reaction-wrapper span.reaction-comment {
+    color: white;
+}
 /* Post End*/
+/* Profile Start */
+.profile {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 40px;
+}
+/* Profile End */
