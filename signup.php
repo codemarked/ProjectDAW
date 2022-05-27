@@ -63,6 +63,7 @@
         <meta name="description" content="Upper">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="B. Roland">
+        <script type="text/javascript" src="js/reloadFix.js"></script>
         <link rel="icon" type="image/x-icon" href="img/logo.ico">
         <link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">

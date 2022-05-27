@@ -1,7 +1,7 @@
 <?php
 
 $DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'web';
+$DATABASE_USER = 'root';
 $DATABASE_PASS = 'Reberion12211';
 $DATABASE_NAME = 'Proiect_DAW';
 

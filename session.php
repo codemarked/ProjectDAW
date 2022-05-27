@@ -10,12 +10,8 @@
         $_SESSION['avatar'] = $row['avatar'];
     }
    
+    $session_id = $_SESSION['id'];
     $login_session = $_SESSION['user'];
     $avatarLink = $_SESSION['avatar'];
     $email = $_SESSION['email'];
-   
-    if(!isset($_SESSION['user'])){
-        header("Location: http://localhost/");
-        exit();
-    }
 ?>

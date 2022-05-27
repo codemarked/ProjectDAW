@@ -1,9 +1,9 @@
 <?php
+    include('utils.php');
     include('session.php');
     $currentTime = round(microtime(true) * 1000);
     $sender = $_SESSION['id'];
     if (isset($_POST['reaction'])) {
-        echo "Reaction works";
         if ($_POST['reaction'] == 'Like_Post') {
             mysqli_query($connection, "INSERT INTO `$TABLE_LIKES_POST` (`post_id`,`sender`,`created_date`) VALUES (".$_POST['postid'].",".$sender.",".(round(microtime(true) * 1000)).");");
             
@@ -27,7 +27,6 @@
             
         } else if ($_POST['reaction'] == 'Uncomment_Profile') {
             mysqli_query($connection, "DELETE FROM `$TABLE_COMMENTS_PROFILE` WHERE `sender`=".$sender." AND `post_id`=".$_POST['postid'].";");
-            
         }
     } else if (isset($_POST['unpost'])) {
         
@@ -84,6 +83,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/upload_images.js"></script>
         <script type="text/javascript" src="js/likeButton.js"></script>
+        <script type="text/javascript" src="js/reloadFix.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -95,7 +95,7 @@
                         <div class="hoverable">
                             <div class="info">
                                 <div class="user">
-                                    <div class="profile-pic" style="border: 1px solid white;">
+                                    <div class="profile-pic" style="width: 45px;height: 45px;broder: 1px solid #fff;">
                                         <img src="<?php echo $avatarLink;?>" alt="">
                                     </div>
                                     <p class="username" style="color: white;"><?php echo $login_session;?></p>
@@ -115,13 +115,13 @@
                 <div class="left-col">
                     <div class="upload__box">
                         <form id="upload-post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" enctype="multipart/form-data" method="post">
-                            <input type="hidden" name="sender" <?php echo 'value=""'?>>
                         </form>
                         
                         <div class="comment-wrapper">
                             <input form="upload-post" class="comment-box" name="description" placeholder="Add a description" maxlength=255 required>
                             <input form="upload-post" class="submit" type="submit" name="submit" value="Post">
                         </div>
+                        
                         <div class="upload__btn-box">
                             <label class="upload__btn">
                                 <span class="fas fa-upload"></span>Upload
@@ -138,7 +138,6 @@
                             $sender = $row['sender'];
                             $account = mysqli_query($connection, "SELECT `id`, `username`, `avatar` FROM `$TABLE_ACCOUNTS` WHERE `id`=$sender;");
                             if ($profile = mysqli_fetch_array($account)) {
-                                
                     ?>
                     
                     <div class="post">
@@ -172,39 +171,45 @@
                             </div>
                             
                             <?php 
-                                $likes = mysqli_query($connection,"SELECT COUNT(*) AS `likes` FROM `$TABLE_LIKES_POST` WHERE `post_id`=".$postid.";");
+                                $likes = mysqli_query($connection,"SELECT COUNT(*) AS `likes` FROM `$TABLE_LIKES_POST` WHERE `post_id`=$postid;");
                                 $likeCount = mysqli_fetch_array($likes);
                             ?>
                             
                             <p class="likes" <?php echo 'id="p-'.$postid.'"';?>><?php echo $likeCount['likes'];?> likes</p>
                                 
                             <p class="description"><span class="user"><?php echo $login_session;?> </span> <?php echo $row['description'] != NULL ? $row['description'] : "";?></p>
-                                
-                            <?php 
-                                $passedMessage = "A moment ago";
-                                $minutesPassed = (int)((round(microtime(true) * 1000) - $row['created_date'])/60000);
-                                if ($minutesPassed > 1) {
-                                    $passedMessage = "$minutesPassed minutes ago";
-                                }
-                                if ($minutesPassed > 59) {
-                                    $hoursPassed = (int)($minutesPassed / 60);
-                                    $passedMessage = "$hoursPassed hours ago";
-                                    if ($hoursPassed > 23) {
-                                        $daysPassed = (int)($hoursPassed / 24);
-                                        $passedMessage = "$daysPassed days ago";
-                                        if ($daysPassed > 6) {
-                                            $weeksPassed = (int)($daysPassed / 7);
-                                            $passedMessage = "$weeksPassed weeks ago";
-                                        }
-                                    }
-                                }
-                            ?>
-                            <p class="post-time"><?php echo $passedMessage;?></p>
+                            
+                            <p class="post-time"><?php echo getTimePassed($row['created_date']);?></p>
+                            
+                            <div class="comment-section" style="display: none;" <?php echo 'id="s-'.$postid.'"';?>>
+                                <?php
+                                    $comments = mysqli_query($connection, "SELECT * FROM `$TABLE_COMMENTS_POST` WHERE `post_id` = $postid ORDER BY `created_date`;");
+                                    while ($comm = mysqli_fetch_array($comments)) {
+                                        $commenter = mysqli_query($connection, "SELECT `id`, `username`, `avatar` FROM `$TABLE_ACCOUNTS` WHERE `id`=".$comm['sender'].";");
+                                        if ($commenterProfile = mysqli_fetch_array($commenter)) {
+                                ?>
+                                <div class="comment">
+                                    <div class="profile-pic" style="width: 50px;height: 50px;background: #fff;">
+                                        <img src="<?php echo $commenterProfile['avatar'];?>" alt="">
+                                    </div>
+                                    <div>
+                                        <p class="username"><?php echo $commenterProfile['username'];?></p>
+                                        <p class="post-time" style="font-size: 10px;margin-left: 5px;"><?php echo getTimePassed($comm['created_date']);?></p>
+                                    </div>
+                                    <p class="text"><?php echo $comm['text'];?></p>
+                                </div>
+                                <?php }}?>
+                            </div>
                         </div>
-                        <div class="comment-wrapper">
-                            <input type="text" class="comment-box" placeholder="Add a comment" maxlength=255>
-                            <button class="comment-btn">post</button>
-                        </div>
+                        
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" enctype="multipart/form-data" method="post">
+                            <input type="hidden" name="postid" <?php echo 'value="'.$postid.'"'?>>
+                            <input type="hidden" name="reaction" value="Comment_Post"?>
+                            <div class="comment-wrapper">
+                                <input class="comment-box" name="text" placeholder="Add a comment" maxlength=255 required>
+                                <input class="comment-btn" type="submit" value="post">
+                            </div>
+                        </form>
                     </div>
                     
                     <?php }
