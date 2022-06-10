@@ -10,6 +10,9 @@ html {
   	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+a {
+    text-decoration: none;
+}
 body {
     background-color: #f1f1f1;
     margin: 0 auto;
@@ -32,7 +35,6 @@ body {
     width: 120px;
 }
 .header a {
-    float: left;
     text-decoration: none;
     color: #fff;
     text-align: center;
@@ -40,6 +42,9 @@ body {
 .link {
     text-align: center;
     padding: 14px 16px;
+}
+.link:hover {
+    
 }
 .dropdown {
     position: relative;
@@ -166,13 +171,13 @@ body {
     display: none;
     opacity: 0.9;
     background-color: #292929;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 100%;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 4s;
+	animation-duration: 2s;
 }
 @keyframes fadeInOpacity {
 	0% {
@@ -190,6 +195,9 @@ body {
     padding-right: 8%;
     text-align: left;
 }
+.cookie .title-wrap h4 {
+    color: white;
+}
 .cookie .content-wrap {
     position: relative;
     padding-left: 8%;
@@ -197,6 +205,9 @@ body {
 }
 .cookie .content-wrap .msg-wrap {
     text-align: left;
+}
+.cookie .content-wrap .msg-wrap p {
+    color: white;
 }
 .cookie .content-wrap .msg-wrap .btn-wrap button {
     padding: 6px 10px;
@@ -384,6 +395,43 @@ body {
     border: 1px solid #dfdfdf;
     margin-top: 40px;
 }
+.post_delete_button {
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    min-width: 116px;
+    width: 100%;
+    padding: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid;
+    background-color: #292929;
+    border-color: #292929;
+    line-height: 26px;
+    font-size: 14px;
+}
+.post_delete_button .submit {
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    min-width: 116px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid;
+    background-color: #292929;
+    border-color: #292929;
+    border-radius: 10px;
+    line-height: 26px;
+    font-size: 14px;
+}
+.post_delete_button .submit:hover {
+    background-color: unset;
+    color: #292929;
+    transition: all 0.3s ease;
+}
 .info{
     width: 100%;
     height: 60px;
@@ -439,6 +487,33 @@ body {
 }
 .description .user{
     cursor: pointer;
+}
+.comment-section {
+    display: block;
+}
+.comment {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.comment .profile-pic {
+    border: 1px solid white;
+}
+.comment .profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.comment .username {
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    margin-left: 4px;
+}
+.comment .text {
+    margin-left: 10px;
 }
 .post-time{
     color: rgba(0, 0, 0, 0.5);
@@ -536,11 +611,48 @@ body {
 /* Post End*/
 /* Profile Start */
 .profile {
-    display: flex;
     width: 100%;
     height: auto;
+    min-height: 100vh;
     background: #fff;
     border: 1px solid #dfdfdf;
     margin-top: 40px;
+}
+.posted {
+    max-width: 207px;
+    max-height: 207px;
+    width: auto;
+    margin-left: 2px;
+    object-fit: cover;
+}
+.gallery {
+    margin: 0;
+}
+.gallery .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.gallery .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+.gallery .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
 }
 /* Profile End */

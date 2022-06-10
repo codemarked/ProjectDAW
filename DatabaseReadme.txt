@@ -1,0 +1,1 @@
+Modificati datele de conectare la baza de date in /mysql/config.php

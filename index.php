@@ -35,6 +35,7 @@
         <meta name="description" content="Upper Login">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="B. Roland">
+        <script type="text/javascript" src="js/reloadFix.js"></script>
         <link rel="icon" type="image/x-icon" href="img/logo.ico">
         <link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
@@ -76,54 +77,7 @@
                 </div>
             </div>
         </div>
-<script>
-// Create cookie
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-// Delete cookie
-function deleteCookie(cname) {
-    const d = new Date();
-    d.setTime(d.getTime() + (24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=;" + expires + ";path=/";
-}
-
-// Read cookie
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-// Set cookie consent
-function acceptCookieConsent(){
-    deleteCookie('user_cookie_consent');
-    setCookie('user_cookie_consent', 1, 30);
-    document.getElementById("cookieNotice").style.display = "none";
-}
-    
-let cookie_consent = getCookie("user_cookie_consent");
-if(cookie_consent != ""){
-    document.getElementById("cookieNotice").style.display = "none";
-}else{
-    document.getElementById("cookieNotice").style.display = "block";
-}
-</script>
+        <script type="text/javascript" src="js/cookies.js"></script>
         <div class="footer">
             <small style="margin-left: 10px;color: #fff;">&copy; Copyright 2022, Bartha R.</small>
             <small style="color: #fff;font-size: 20px;">|</small>
